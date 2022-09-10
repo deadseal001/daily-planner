@@ -30,6 +30,15 @@ Application GitHub URL submitted
 
 GitHub repo contains application code
 
+## Deployment: 32%
+Application deployed at live URL
+
+Application loads with no errors
+
+Application GitHub URL submitted
+
+GitHub repo contains application code
+
 ## Application Quality: 15%
 Application user experience is intuitive and easy to navigate
 
