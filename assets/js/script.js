@@ -1,20 +1,21 @@
 var tasks=["","","","","","","","",""];
-console.log(tasks);
 var loadTasks=function(){
     tasks=JSON.parse(localStorage.getItem("dailyTasks"))
-    console.log(tasks);
 
     if (!tasks){
         tasks=["","","","","","","","",""];
     };
-    console.log(tasks);
     for (var i=0; i<9; i++){
         $("div[data-time="+ (i+9) +"]").text(tasks[i]);
     };
+
+    $(".work").each(function(){
+        auditTask($(this));
+    });
 };
 
 
-
+var text="";
 
 $(".work").on("click",function(){
     var timeSlot= $(this).attr("data-time");
@@ -40,6 +41,10 @@ $(".saveBtn").on("click",function(){
     saveTasks();
     var newDiv=$("<div>").addClass("col-9 work d-flex align-items-center").attr("data-time",seq2).text(tasks[seq]);
     $("textarea[data-time="+seq2+"]").replaceWith(newDiv);
+
+    $(".work").each(function(){
+        auditTask($(this));
+    });
 });
 
 
@@ -47,8 +52,29 @@ var saveTasks=function(){
     localStorage.setItem("dailyTasks", JSON.stringify(tasks));
 };
 
+function auditTask(workEl){
+    //get time from task element
+    var timeHour = parse($(workEl).attr("data-time"));
+    console.log(timeHour);
+    console.log((moment().hour());
+    if (moment().hour() < timeHour){
+        $(workEl).addClass("future");
+    } 
+    else if(moment().hour() == timeHour) {
+        $(workEl).removeClass("future").addClass("present");
+    } 
+    else{
+        $(workEl).removeClass("present").addClass("past");
+    }
+};
 
 
-// $(time-block).on()
-
+// loadTasks when open the page
 loadTasks();
+
+setInterval(function(){
+    console.log(moment().hour());
+    $(".work").each(function(){
+        auditTask($(this));
+    });
+}, 1000*3);
