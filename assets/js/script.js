@@ -15,29 +15,26 @@ var loadTasks=function(){
 };
 
 
-$(".work").on("click",function(){
+$(".time-block").on("click",".work",function(){
     var timeSlot= $(this).attr("data-time");
     console.log(this);
-    console.log(timeSlot);
+    // console.log(timeSlot);
     var text = $("div[data-time="+timeSlot+"]").text().trim();
-    var newText= $("<textarea>").addClass("from-control col-9 work").attr("data-time",timeSlot).text(text);
+    var newText= $("<textarea>").addClass("from-control col-9").attr("data-time",timeSlot).text(text);
     console.log(newText);
     $(this).replaceWith(newText);
     newText.trigger("focus");
 });
 
 $(".saveBtn").on("click",function(){
-    console.log($(this).parent());
-    var seq = $(this).parent().attr("data-seq");
-    console.log(seq);
-    var seq2=parseInt(seq)+9;
-    console.log(seq2);
+    var seq2=parseInt($(this).parent().attr("data-seq"))+9;
+    // console.log(seq2);
     text=$("textarea[data-time="+seq2+"]").val();
-    console.log($("textarea[data-time="+seq2+"]"));
-    console.log(text);
-    tasks[seq]=text;
+    // console.log($("textarea[data-time="+seq2+"]"));
+    // console.log(text);
+    tasks[parseInt($(this).parent().attr("data-seq"))]=text;
     saveTasks();
-    var newDiv=$("<div>").addClass("col-9 work d-flex align-items-center").attr("data-time",seq2).text(tasks[seq]);
+    var newDiv=$("<div>").addClass("col-9 work d-flex align-items-center").attr("data-time",seq2).text(tasks[parseInt($(this).parent().attr("data-seq"))]);
     $("textarea[data-time="+seq2+"]").replaceWith(newDiv);
 
     $("div.work").each(function(){
@@ -45,6 +42,11 @@ $(".saveBtn").on("click",function(){
     });
 });
 
+$(".btn").on("click",function(){
+    tasks=["","","","","","","","",""];
+    saveTasks();
+    loadTasks();
+})
 
 var saveTasks=function(){
     localStorage.setItem("dailyTasks", JSON.stringify(tasks));
