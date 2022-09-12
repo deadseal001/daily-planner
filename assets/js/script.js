@@ -54,17 +54,15 @@ var saveTasks=function(){
 
 function auditTask(workEl){
     //get time from task element
-    var timeHour = parse($(workEl).attr("data-time"));
-    console.log(timeHour);
-    console.log((moment().hour());
+    var timeHour = parseInt($(workEl).attr("data-time"));
     if (moment().hour() < timeHour){
-        $(workEl).addClass("future");
+        $(workEl).removeClass("past").removeClass("present").addClass("future");
     } 
     else if(moment().hour() == timeHour) {
-        $(workEl).removeClass("future").addClass("present");
+        $(workEl).removeClass("future").removeClass("past").addClass("present");
     } 
     else{
-        $(workEl).removeClass("present").addClass("past");
+        $(workEl).removeClass("present").removeClass("future").addClass("past");
     }
 };
 
@@ -74,7 +72,7 @@ loadTasks();
 
 setInterval(function(){
     console.log(moment().hour());
-    $(".work").each(function(){
+    $("div.work").each(function(){
         auditTask($(this));
     });
-}, 1000*3);
+}, 1000);
