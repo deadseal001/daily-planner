@@ -42,7 +42,7 @@ $(".saveBtn").on("click",function(){
     var newDiv=$("<div>").addClass("col-9 work d-flex align-items-center").attr("data-time",seq2).text(tasks[seq]);
     $("textarea[data-time="+seq2+"]").replaceWith(newDiv);
 
-    $(".work").each(function(){
+    $("div.work").each(function(){
         auditTask($(this));
     });
 });
