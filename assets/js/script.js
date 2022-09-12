@@ -15,8 +15,6 @@ var loadTasks=function(){
 };
 
 
-var text="";
-
 $(".work").on("click",function(){
     var timeSlot= $(this).attr("data-time");
     console.log(this);
