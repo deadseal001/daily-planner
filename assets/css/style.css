@@ -73,7 +73,6 @@ textarea{
 }
 
 .btn{
-  transition: all .5s ease-out;  
   background-size:1px 100px; 
   background-position: 1px -10px;
   background-color: #ea0028;
