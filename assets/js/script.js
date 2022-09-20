@@ -2,6 +2,7 @@ var tasks = ["", "", "", "", "", "", "", "", ""];
 
 //function loadTasks
 var loadTasks = function () {
+  $("#date").text(moment().format("MMMM Do, YYYY"));
   tasks = JSON.parse(localStorage.getItem("dailyTasks"));
 
   if (!tasks) {
@@ -86,6 +87,7 @@ loadTasks();
 var timeH = 0;
 setInterval(function () {
   if (timeH != moment().hour()) {
+    loadTasks();
     timeH = moment().hour();
     $("div.work").each(function () {
       auditTask($(this));
