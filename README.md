@@ -17,5 +17,6 @@ A website that can provide a work day scheduler which can help users plan their 
 (https://deadseal001.github.io/daily-planner/)
 
 
-![Screen Shot 2022-09-13 at 10 54 56 AM](https://user-images.githubusercontent.com/110753777/189785925-e81590aa-df98-4491-9588-3b83bc38cf77.png)
 
+
+![Screen Shot 2022-09-16 at 12 12 34 PM](https://user-images.githubusercontent.com/110753777/191140490-72788d09-2778-4d3f-a039-2b6b31202c85.png)
